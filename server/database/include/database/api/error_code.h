@@ -1,0 +1,19 @@
+#pragma once
+
+#ifndef _ERROR_CODE_H_
+#define _ERROR_CODE_H_
+
+typedef int error_code;
+
+#define ERROR_FILE_ALLOC_FAILED -1
+#define ERROR_MEM_ALLOC_FAILED -2
+#define ERROR_UNABLE_TO_CREATE_INTERNAL_STRUCT -3
+#define ERROR_UNABLE_TO_READ_INTERNAL_STRUCT -4
+#define ERROR_TYPE_IS_NOT_EMPTY -5
+#define ERROR_CAN_NOT_OPEN_FILE -6
+#define ERROR_LIST_IS_EMPTY -7
+#define ERROR_HAS_NO_NEXT_ELEMENT -8
+#define ERROR_NO_SUCH_TYPE -9
+#define ERROR_UNKNOWN_QUERY_TYPE -10
+
+#endif /* _ERROR_CODE_H_ */

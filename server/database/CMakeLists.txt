@@ -1,0 +1,40 @@
+set(DATABASE_DIR ${llp-lab3_SOURCE_DIR}/server/database)
+
+set(DATABASE_SOURCES
+  ${DATABASE_DIR}/src/api/element_storage_api.c
+  ${DATABASE_DIR}/src/api/element.c
+  ${DATABASE_DIR}/src/api/schema.c
+  ${DATABASE_DIR}/src/api/storage_iterator.c
+  ${DATABASE_DIR}/src/memory_management/allocator/offset_fixed_base_allocator.c
+  ${DATABASE_DIR}/src/memory_management/allocator/offset_fixed_element_allocator.c
+  ${DATABASE_DIR}/src/memory_management/allocator/offset_element_allocator.c
+  ${DATABASE_DIR}/src/memory_management/allocator/offset_freelist_allocator.c
+  ${DATABASE_DIR}/src/memory_management/allocator/offset_empty_allocator.c
+  ${DATABASE_DIR}/src/memory_management/allocator/offset_page_allocator.c
+  ${DATABASE_DIR}/src/memory_management/file/offset_element_io.c
+  ${DATABASE_DIR}/src/memory_management/file/offset_memory_manager.c
+  ${DATABASE_DIR}/src/memory_management/file/offset_unix_file_manager.c
+  ${DATABASE_DIR}/src/memory_management/file/offset_windows_file_manager.c
+  ${DATABASE_DIR}/src/internal/element_storage.c
+  ${DATABASE_DIR}/src/internal/internal_element_type.c
+  ${DATABASE_DIR}/src/internal/internal_element.c
+  ${DATABASE_DIR}/src/internal/internal_link_type.c
+  ${DATABASE_DIR}/src/internal/list_construct.c
+  ${DATABASE_DIR}/src/list/offset_list_iterator.c
+  ${DATABASE_DIR}/src/list/offset_list.c
+  ${DATABASE_DIR}/src/query/query_processor.c
+  PARENT_SCOPE
+)
+
+set(DATABASE_INCLUDES 
+  ${DATABASE_DIR}/include
+  ${DATABASE_DIR}/include/database
+  ${DATABASE_DIR}/include/database/api
+  ${DATABASE_DIR}/include/database/internal
+  ${DATABASE_DIR}/include/database/list
+  ${DATABASE_DIR}/include/database/memory_management/allocator
+  ${DATABASE_DIR}/include/database/memory_management/file
+  ${DATABASE_DIR}/include/database/memory_management
+  ${DATABASE_DIR}/include/database/query
+  PARENT_SCOPE
+)
