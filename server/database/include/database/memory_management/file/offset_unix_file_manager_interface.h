@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef __unix__
+#if defined(__unix__)||defined(__APPLE__)
 #ifndef _OFFSET_unix_FILE_MANAGER_INTERFACE_H_
 #define _OFFSET_unix_FILE_MANAGER_INTERFACE_H_
 

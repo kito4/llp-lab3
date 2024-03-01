@@ -568,9 +568,7 @@ char *yytext;
 #define INITIAL 0
 
 /*windows compatibility case*/
-#include <io.h>
-#define isatty _isatty
-#define fileno _fileno
+#include <unistd.h>
     
 #ifndef YY_EXTRA_TYPE
 #define YY_EXTRA_TYPE void *

@@ -20,27 +20,8 @@ bool element_storage_alloc(struct element_storage** ptr) {
 }
 
 bool element_storage_ctor(struct element_storage* storage, const char* filename, size_t page_size) {
-#ifdef _WIN32
-  struct offset_windows_file_manager* file_manager;
-  if (!offset_windows_file_manager_alloc(&file_manager)) {
-    return false;
-  }
 
-  if (!offset_windows_file_manager_ctor(file_manager, filename, (mem_size_t){.value = page_size})) {
-    free(file_manager);
-    return false;
-  }
-
-  if (!internal_element_storage_ctor(storage, (struct offset_memory_manager*)file_manager,
-                                     (mem_size_t){.value = page_size})) {
-    offset_windows_file_manager_dtor(file_manager);
-    free(file_manager);
-    return false;
-  }
-
-  return true;
-#endif /* _WIN32 */
-#ifdef __unix__
+#if defined(__unix__)||defined(__APPLE__)
   struct offset_unix_file_manager* file_manager;
   if (!offset_unix_file_manager_alloc(&file_manager)) {
     return false;
@@ -59,7 +40,7 @@ bool element_storage_ctor(struct element_storage* storage, const char* filename,
   }
 
   return true;
-#endif /* __unix__ */
+#endif
   return false;
 }
 
@@ -84,7 +65,7 @@ bool element_storage_read(struct element_storage* storage, const char* filename,
 
   return true;
 #endif /* _WIN32 */
-#ifdef __unix__
+#if defined(__unix__)||defined(__APPLE__)
   struct offset_unix_file_manager* file_manager;
   if (!offset_unix_file_manager_alloc(&file_manager)) {
     return false;
@@ -114,7 +95,7 @@ void element_storage_dtor(struct element_storage* storage) {
   offset_windows_file_manager_dtor(file_manager);
   free(file_manager);
 #endif /* _WIN32 */
-#ifdef __unix__
+#if defined(__unix__)||defined(__APPLE__)
   struct offset_unix_file_manager* file_manager = (struct offset_unix_file_manager*)storage->mem_manager;
   internal_element_storage_dtor(storage);
   offset_unix_file_manager_dtor(file_manager);

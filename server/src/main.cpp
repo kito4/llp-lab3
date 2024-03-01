@@ -15,19 +15,19 @@ extern "C" {
 
 int main(int argc, char* argv[]) {
   nlohmann::json query_schema_doc;
-  if (!valijson::utils::loadDocument("query_schema.json", query_schema_doc)) {
+  if (!valijson::utils::loadDocument("/Users/a11/Documents/llp-lab3-master/query_schema.json", query_schema_doc)) {
     std::cerr << "Unable to open query_schema.json" << std::endl;
     return -1;
   }
 
   nlohmann::json element_schema_doc;
-  if (!valijson::utils::loadDocument("response_schema.json", element_schema_doc)) {
+  if (!valijson::utils::loadDocument("/Users/a11/Documents/llp-lab3-master/response_schema.json", element_schema_doc)) {
     std::cerr << "Unable to open response_schema.json" << std::endl;
     return -1;
   }
 
-  StorageAdapter storage(argv[1]);
-  Server server(argv[2], atoi(argv[3]));
+  StorageAdapter storage("test7");
+  Server server("127.0.0.1", 3458);
 
   if (server.accept()) {
     while (true) {

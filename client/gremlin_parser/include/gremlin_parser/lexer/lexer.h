@@ -220,7 +220,7 @@ extern char *yytext;
 #endif
 
 /*windows compatibility case*/
-#include <io.h>
+
 #define isatty _isatty
 #define fileno _fileno
     
